@@ -1,0 +1,83 @@
+﻿@model ShopWeb.Models.Shop
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="col-md-12 card-body">
+        <form asp-action="AddNewShop" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ShopName" class="control-label"></label>
+                        <input asp-for="ShopName" class="form-control" />
+                        <span asp-validation-for="ShopName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OwnerName" class="control-label"></label>
+                        <input asp-for="OwnerName" class="form-control" />
+                        <span asp-validation-for="OwnerName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShopType" class="control-label"></label>
+                        <input asp-for="ShopType" class="form-control" />
+                        <span asp-validation-for="ShopType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Longitude" class="control-label"></label>
+                        <input asp-for="Longitude" class="form-control" />
+                        <span asp-validation-for="Longitude" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Latitiude" class="control-label"></label>
+                        <input asp-for="Latitiude" class="form-control" />
+                        <span asp-validation-for="Latitiude" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNo" class="control-label"></label>
+                        <input asp-for="PhoneNo" class="form-control" />
+                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Website" class="control-label"></label>
+                        <input asp-for="Website" class="form-control" />
+                        <span asp-validation-for="Website" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ward" class="control-label"></label>
+                        <input asp-for="Ward" class="form-control" />
+                        <span asp-validation-for="Ward" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Township" class="control-label"></label>
+                        <input asp-for="Township" class="form-control" />
+                        <span asp-validation-for="Township" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StateDivision" class="control-label"></label>
+                        <input asp-for="StateDivision" class="form-control" />
+                        <span asp-validation-for="StateDivision" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+

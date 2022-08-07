@@ -1,0 +1,63 @@
+﻿@page
+    <body onunload="Closing()" onbeforeunload="Closing()">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-2">User</div>
+                    <div class="col-4"><input type="text" class="form-control" id="userInput" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Message</div>
+                    <div class="col-4"><input type="text" class="class=" form-control" id="messageInput" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-6">
+                        <input type="button" class="btn btn-dark" id="sendButton" value="Send Message" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+        <div>
+            <input type="date" class="form-control date" />
+        </div>
+        <div id="app">
+            {{Nani}}
+        </div>
+    </body>
+@section Scripts{
+
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                Nani: "LLLL"
+            }
+        });
+        
+        function Closing() {
+            var closedDT = $('.date').val();
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("TimerLog","Home")',
+                data: {
+                    closedDate: closedDT,
+                }
+            });
+        }
+        </script>
+}

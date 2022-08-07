@@ -1,0 +1,113 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@using System.Security.Claims;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <link href="~/css/Custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Faster+One|Monoton|Trade+Winds&display=swap" rel="stylesheet">
+</head>
+@{ 
+    var name = HttpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+}
+<body>
+    <div class="container-fluid optionalnav pt-2 pb-2 text-warning" style="background-color:#151212;">
+        <div class="row" style="font-family:Calibri;font-size:16px;">
+            <div class="col-md-10">
+                <span><b><i class="fa fa-phone"></i> &nbsp; +9598210211 </b> | &nbsp;</span>
+                <span><b><i class="fa fa-mail-bulk"></i> &nbsp; service.pele.com</b> </span>
+            </div>
+            <div class="col-md-2">
+                <div class="row" style="margin-left:20px;">                      
+                        @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("LogOut","Account")" class="text-warning"><b>Log Out</b></a>
+                            <a href="Home/Privacy" class="ml-3 text-warning"><b> Private Policy</b></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Index","Account")" class="text-warning"><b>Not a member ? </b></a>
+                            <a href="Home/Privacy" class="ml-3 text-warning" ><b> Private Policy</b></a>
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 bg-light" style="border-bottom:1px solid #F5F5F5">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-2 mt-3">
+                                <img src="~/images/logo.png" style="margin:0px;width:90px;" />
+                            </div>
+                            <div class="col-sm-6 col-xs-11">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-2">
+                                        <select class="form-control category">
+                                            <option class="fa-icons">&#xf039 &nbsp;&nbsp; All &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf5e7 &nbsp;&nbsp; Electronics  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf108 &nbsp;&nbsp; Computers  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf095 &nbsp;&nbsp; Phones  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf553 &nbsp;&nbsp; Cloths  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf805 &nbsp;&nbsp; Foods  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf508 &nbsp;&nbsp; Man Collection  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf182 &nbsp;&nbsp; Blouse  &nbsp;&nbsp;</option>
+                                            <option class="fa-icons">&#xf787 &nbsp;&nbsp; Toys  &nbsp;&nbsp;</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-10" style="margin-left:-5.5%;">
+                                        <input type="text" class="searchinput" placeholder="Search.." name="search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 pt-3" style="margin-left:-4%">
+                                <button class="btn searchbtn">Search</button>
+                                <button class="btn navbtn"><i class="fa fa-shopping-cart"></i><span class="badge badge-pill badge-danger">0</span></button>
+                                <button class="btn navbtn">Premium</button>
+                                <button class="btn navbtn">Orders</button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn dropdown-toggle navbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        menu
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button">Action</button>
+                                        <button class="dropdown-item" type="button">Another action</button>
+                                        <button class="dropdown-item" type="button">Something else here</button>
+                                    </div>
+                                </div>
+                                @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                                {
+                                    <a style="font-family:Calibri;font-size:16px" class="pr-2"><b class="pr-1">Hi!</b>@name</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Index","Account")" style="font-family:Calibri;font-size:16px" class="pr-2"><b class="pr-1">Register Now!</b></a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div><br />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

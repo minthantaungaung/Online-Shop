@@ -1,0 +1,240 @@
+﻿@model ShopWeb.Models.Members
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login|Signup</title>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <script src="~/lib/font-awesome/js/all.js"></script>
+    <link href="~/css/Custom.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Faster+One|Averia Sans Libre|Trade+Winds&display=swap" rel="stylesheet">
+
+</head>
+<body style="font-family: 'Averia Sans Libre';background-image: url('images/bg-wave.svg');background-repeat:no-repeat;background-position:center;background-size:cover;">
+    <div class="mt-lg-5" style="font-family: 'Averia Sans Libre';">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h3 style="font-family:'Averia Sans Libre';">Sign in</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input id="email" type="email" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                <input id="pwd" type="password" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <a href="" data-toggle="modal" data-target="#Fpwdmodal">Forgot your password?</a>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="btn btn-block btn-dark" value="Login" onclick="Login()" />
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="card border-0">
+                        <div class="card-body" style="background:#3B579D">
+                            <span class="badge badge-light"><img src="~/images/fb-login.png" style="width:30px" /></span>
+                            <a href="@Url.Action("FBLogin","Account")" class="text-white ml-4" style="font-size:20px">Login with Facebook</a>
+                        </div>
+                    </div><br />
+                    <div class="card border-0 bg-light">
+                        <div class="card-body" style="border:0">
+                            <span class="badge badge-light"><img src="~/images/google-login.png" style="width:30px" /></span>
+                            <a href="" class="ml-4" style="font-size:20px">Login with Google</a>
+                        </div>
+                    </div><br />
+                    <div class="card border-0">
+                        <div class="card-body" style="background:#0077B5">
+                            <span class="badge badge-light"><img src="~/images/linked-login.png" style="width:30px" /></span>
+                            <a href="#" class="text-white ml-4" style="font-size:20px">Login with LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center" style="padding-top:30%;padding-bottom:30%;">
+                    <h3 style="font-family:'Averia Sans Libre';color:white">Or</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="card" style="box-shadow:0px 5px 5px 0px #808080">
+                        <div class="card-header text-center">
+                            <h3 style="font-family:'Averia Sans Libre';">Sign Up</h3>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Upsert">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Phone" class="control-label"></label>
+                                    <input asp-for="Phone" class="form-control" />
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Ward" class="control-label"></label>
+                                    <input asp-for="Ward" class="form-control" />
+                                    <span asp-validation-for="Ward" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Township" class="control-label"></label>
+                                    <input asp-for="Township" class="form-control" />
+                                    <span asp-validation-for="Township" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="StateDivision" class="control-label"></label>
+                                    <input asp-for="StateDivision" class="form-control" />
+                                    <span asp-validation-for="StateDivision" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <a href="#" class="">Need Help?</a>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Submit" class="btn btn-block btn-dark" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Forgot Pwd Modal -->
+    <div class="modal fade" id="Fpwdmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Recover Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body fpcontent">
+                    <div class="chkemail">
+                        <div class="p-3 m-3" style="border:1px solid black">
+                            <div>
+                                Please enter the email address of your account. The email must be identical with the one you registered your account.
+                                We will send your email a confirmation code.
+                            </div>
+                        </div>
+                        <div class="form-group ml-3 mr-3">
+                            <label class="control-label">Email</label>
+                            <input id="fpwdemail" placeholder="Email Address.." type="email" class="form-control" />
+                        </div>
+                        <div class="form-group ml-3 mr-3 mb-3">
+                            <input type="button" class="btn btn-block btn-dark SendConfirmation" value="Send" onclick="SendConfirmationCode()" />
+                        </div>
+                    </div>
+                    <div class="cfemail">
+                        <div class='p-3 m-3' style='border: 1px solid black'>
+                            <div>We Sent a confirmation email to your account.Please check it and fill in the box below.</div>
+                        </div>
+                        <div class="form-group ml-3 mr-3">
+                            <label class="control-label">Confirmation Code</label>
+                            <input id="confirmCode" placeholder="4 - Digit Code" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group ml-3 mr-3">
+                            <input type="button" class="btn btn-block btn-dark checkConfirmation" value="Submit" onclick="CheckConfirmationCode()"/>
+                        </div>
+                        <div class="form-group ml-3 mr-3 mb-5 resend hidden">
+                            <a href="" onclick="SendConfirmationCode()"> Didn't get the email? Click here to Send Again!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        var Mail = "";
+
+        $(function(){
+            $('.cfemail').hide();
+        });
+        function Login() {
+            var email = $('#email').val();
+            var pwd = $('#pwd').val();
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("Login","Account")',
+                data: {
+                    Email: email,
+                    Pwd: pwd
+                },
+                success: function (My) {
+                    if (My == "OK") {
+                        window.location.replace("https://localhost:44350/Home");
+                    }
+                }
+            });
+        }
+        function SendConfirmationCode() {
+            var email = $('#fpwdemail').val();
+            Mail = email;
+            $.ajax({
+                cache: false,
+                url: '@Url.Action("ConfirmEmail","Account")',
+                data: {
+                    Email: email,
+                },
+                beforeSend: function (){
+                    $('.SendConfirmation').val("Loading...");
+                    $('.SendConfirmation').prop("disabled", true)
+                },
+                success: function (data) {
+                    if (data == "Yes") {
+                        $('.chkemail').hide();
+                        $('.cfemail').show();
+
+                        //"<div class='p-3 m-3' style='border: 1px solid black'><div>We Sent a confirmation email to your account.Please check it and fill in the box below.</div ></div ><div class='form-group ml-3 mr-3'><label class='control-label'>Confirmation Code</label><input id='confirmCode' placeholder='4 - Digit Code' type='text' class='form-control' /></div><div class='form-group ml-3 mr-3'><input type='button' class='btn btn-block btn-dark checkConfirmation' value='Check' onclick='CheckConfirmationCode()'/></div><div class='form-group ml-3 mr-3 mb-5 resend hidden'><a href =''> Didn't get the email? Click here to Send Again!</a></div >"
+                        
+                    } else {
+                        alert(data);
+                    }
+                }
+            });
+        }
+        function CheckConfirmationCode() {
+            var Code = $('#confirmCode').val();
+            alert(Mail);
+            alert(Code);
+        }
+    </script>
+</body>
+</html>

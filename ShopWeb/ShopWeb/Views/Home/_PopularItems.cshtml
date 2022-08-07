@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ShopWeb.Models.Products>
+<div class="row mt-lg-5">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <img src="~/images/default-product.png" class="card-img-top" />
+                </div>
+                <div class="card-body">
+                        <h4 style="font-family: 'Averia Sans Libre';font-size:1em">@item.Brand | @item.Name</h4>
+                        <div class="row">
+                            <div class="col-8">
+                                @{
+                                    if (item.Rating != null)
+                                    {
+                                        var a = Int32.Parse(item.Rating);
+                                        for (int i = 1; i <= a; i++)
+                                        {
+                                            <i class="fa fa-star text-warning"></i>
+                                        }
+                                    }
+                                }
+                            </div>
+                            <div class="col-4">
+                                <a href="">View</a>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
