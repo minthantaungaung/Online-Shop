@@ -6,3 +6,5 @@ by the shopkeeper, Got a digital receipt, Shopkeeper can post products and manag
 <br><br>
 <b>Technologies:</b><br>
 C#,ASP .NET CORE MVC,HTML,CSS, JavaScript,JQuery,Bootstrap
+<br>
+
